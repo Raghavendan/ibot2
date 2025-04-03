@@ -1,4 +1,6 @@
+
 streamlit
+pypdf
 PyPDF2
 Pillow
 gtts
