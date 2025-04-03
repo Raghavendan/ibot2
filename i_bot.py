@@ -18,7 +18,7 @@ from langchain_text_splitters import CharacterTextSplitter
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain_community.vectorstores import FAISS
-import win32com.client
+#import win32com.client
 from database import authenticate_user, register_user
 from streamlit_option_menu import option_menu
 
@@ -33,11 +33,11 @@ st.set_page_config(
 pygame.mixer.init()
 load_dotenv()
 # Initialize comtypes
-try:
-    word_application = win32com.client.Dispatch("Word.Application")
-    print("Word is accessible!")
-except Exception as e:
-    print("Error:", e)
+# try:
+#     word_application = win32com.client.Dispatch("Word.Application")
+#     print("Word is accessible!")
+# except Exception as e:
+#     print("Error:", e)
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=GOOGLE_API_KEY)
@@ -52,7 +52,7 @@ def convert_docx_to_pdf(docx_file):
             os.remove("temp.pdf")
         
         convert("temp.docx")
-        word_application.Quit()
+        # word_application.Quit()
         
         pdf_bytes = BytesIO()
         with open("temp.pdf", "rb") as f:
